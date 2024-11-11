@@ -72,13 +72,9 @@ public class SearchCommand extends Command {
             }
         }
         model.updateFilteredPersonList(finalPredicate);
-        int resultSize = model.getPersonList().size();
-
-        String personOrPersons = (resultSize == 1) ? "person" : "persons";
-        String message = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, resultSize, personOrPersons);
 
         // Return the command result with the dynamic message
-        return new CommandResult(message);
+        return new CommandResult(String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, model.getPersonList().size()));
     }
 
     @Override

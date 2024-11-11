@@ -62,7 +62,7 @@ public class SearchCommandTest {
 
     @Test
     public void execute_zeroNameKeywords_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0, "persons");
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
         NameContainsKeywordsPredicate predicate = prepareNamePredicate(" ");
         SearchCommand command = new SearchCommand(predicate, null);
         expectedModel.updateFilteredPersonList(predicate);
@@ -72,7 +72,7 @@ public class SearchCommandTest {
 
     @Test
     public void execute_multipleNameKeywords_multiplePersonsFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3, "persons");
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
         NameContainsKeywordsPredicate predicate = prepareNamePredicate("Kurz Elle Kunz");
         SearchCommand command = new SearchCommand(predicate, null);
         expectedModel.updateFilteredPersonList(predicate);
@@ -82,7 +82,7 @@ public class SearchCommandTest {
 
     @Test
     public void execute_zeroTagKeywords_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0, "persons");
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
         TagContainsKeywordsPredicate predicate = prepareTagPredicate(" ");
         SearchCommand command = new SearchCommand(predicate, null);
         expectedModel.updateFilteredPersonList(predicate);
@@ -92,7 +92,7 @@ public class SearchCommandTest {
 
     @Test
     public void execute_singleTagKeyword_singlePersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1, "person");
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
         TagContainsKeywordsPredicate predicate = prepareTagPredicate("owesMoney");
         SearchCommand command = new SearchCommand(predicate, null);
         expectedModel.updateFilteredPersonList(predicate);
@@ -102,7 +102,7 @@ public class SearchCommandTest {
 
     @Test
     public void execute_multipleTagKeywords_multiplePersonsFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3, "persons");
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
         TagContainsKeywordsPredicate predicate = prepareTagPredicate("friends");
         SearchCommand command = new SearchCommand(predicate, null);
         expectedModel.updateFilteredPersonList(predicate);
@@ -112,7 +112,7 @@ public class SearchCommandTest {
 
     @Test
     public void execute_nameAndTagSearch_combinedSearchFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1, "person");
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
         NameContainsKeywordsPredicate namePredicate = prepareNamePredicate("Alice");
         TagContainsKeywordsPredicate tagPredicate = prepareTagPredicate("friends");
         Predicate<Person> combinedPredicate = namePredicate.and(tagPredicate);
@@ -124,7 +124,7 @@ public class SearchCommandTest {
 
     @Test
     public void execute_nameAndTagSearch_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0, "persons");
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
         NameContainsKeywordsPredicate namePredicate = prepareNamePredicate("NonExistentName");
         TagContainsKeywordsPredicate tagPredicate = prepareTagPredicate("friend");
         Predicate<Person> combinedPredicate = namePredicate.and(tagPredicate);
